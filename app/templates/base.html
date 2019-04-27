@@ -1,6 +1,5 @@
-{%extends 'base.html'%}
-{%import 'macros.html' as macro%}
-{%block content%}
+{% extends 'bootstrap/base.html'%}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +10,11 @@
         <title> Welcome to Blogger </title>
         {% endif %}
     </head>
-    {% import 'macros.html' as macro%}
     <body>
-        {{ macro.displayQuoteeList}}
+        <!-- Content block -->
+
+        {% block content %}
+
+        {% endblock%}
     </body>
+</html>
