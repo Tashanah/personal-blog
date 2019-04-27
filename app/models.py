@@ -38,3 +38,32 @@ class Quote:
         self.author = author
         self.quote = quote
         
+class Review(db.Model):
+    '''
+    review class to allow users to comment on a blog post
+    '''
+    __tablename__ = 'reviews'
+    id = db.Column(db.Integer, primary_key=True)
+    blog = db.Column(db.String)
+    submitted_by = db.Column(db.String)
+    Review = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def save_review(self):
+        Review.all_reviews.append(self)
+
+    @classmethod
+    def clear_reviews(cls):
+        Review.all_reviews.clear()
+
+    @classmethod
+    def get_reviews(cls, blog):
+
+        response = []
+
+        for review in cls.all_reviews:
+            if review.pitch == blog:
+                response.append(review)
+
+        return response
