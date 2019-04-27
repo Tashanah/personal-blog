@@ -19,3 +19,22 @@ class Blog(db.Model):
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
   
+    def save_blog(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_blogs(cls, id):
+        blogs = Blog.query.filter_by(blog_id=id).all()
+        return blogs 
+
+class Quote:
+    '''
+    Quotes class to define random quote objects from the API
+    '''
+
+    def __init__(self,id,author,quote):
+        self.id =id
+        self.author = author
+        self.quote = quote
+        
