@@ -6,6 +6,7 @@ from ..models import User,Blog,Quote,Review,
 from flask_login import login_required,current_user
 from .requests import get_quotes,process_results
 import markdown2
+Review =review.Review 
 
 @main.route("/")
 def index():
@@ -55,3 +56,17 @@ def quotes(quote):
 
     return render_template('quote.html',title = title,quote = quote)  
 
+@main.route('/blog/review/new/<int:id>', methods = ['GET','POST'])
+def new_review(id):
+    form = ReviewForm()
+    blog = get_blog(title)
+
+    if form.validate_on_submit():
+        title = form.title.data
+        review = form.review.data
+        new_review = Review(id,blog,submitted_by)
+        new_review.save_review()
+        return redirect(url_for('blog',id = id ))
+
+    title = f'{blog.title} review'
+    return render_template('new_review.html',title = title, review_form=form, blog=blog)
