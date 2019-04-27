@@ -82,3 +82,12 @@ def blog(id):
     reviews = Review.get_reviews(blog.id)
 
     return render_template('blog.html',title = title,blog=blog,reviews = reviews)
+
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username = uname).first()
+
+    if user is None:
+        abort(404)
+
+    return render_template("profile/profile.html", user = user)
