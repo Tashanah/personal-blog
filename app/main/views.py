@@ -2,11 +2,11 @@ from flask import render_template,request,redirect,url_for,abort
 from . import main
 from .forms import BlogForm,UpdateBlog,ReviewForm
 from ..import db,photos
-from ..models import User,Blog,Quote,Review,
+from ..models import User,Blog,Quote,Review
 from flask_login import login_required,current_user
-from .requests import get_quotes,process_results
+from ..requests import get_quotes,process_results
 import markdown2
-Review =review.Review 
+# Review =reviews.Review 
 
 @main.route("/")
 def index():

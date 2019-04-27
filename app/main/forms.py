@@ -8,8 +8,8 @@ class ReviewForm(FlaskForm):
     review = TextAreaField('Movie Review', validators=[Required()])
     submit = SubmitField('submit')
 
-class UpdateProfile(FlaskForm):
-    bio = TextAreaField('Tell us about you.', validators = [Required ()])
+class UpdateBlog(FlaskForm):
+    blog = TextAreaField('Edit your blog here', validators = [Required ()])
     submit = SubmitField('Submit')
 
 class BlogForm(FlaskForm):

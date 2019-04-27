@@ -10,9 +10,9 @@ def load_user(user_id):
 
 class Blog(db.Model):
     '''
-    Blog class to define the blogs
+    Blog class to define the blog objects
     '''
-   __tablename__ = 'blogs'
+    __tablename__ = 'blogs'
     id = db.Column(db.Integer, primary_key=True)
     blog = db.Column(db.String)
     submitted_by = db.Column(db.String)
