@@ -1,0 +1,44 @@
+
+
+{% extends 'base.html'%}
+{%import 'bootstrap/wtf.html' as wtf%}
+{% import 'macros.html' as macro%}
+<!-- Content block -->
+{% block content %}
+{{ wtf.quick_form(form) }}
+<div class="container">
+
+    
+    <div class="row">
+        <div ({blog.id})>
+        </div>
+
+        <div>
+            <h3>{{ blog.blog }}</h3>
+
+            <p class="overview"> {{ blog.submitted_by}}</p>
+           
+
+
+        </div>
+    </div>
+    <div class="row">
+
+        <h1>Reviews</h1>
+        <hr>
+
+        {% if reviews %}
+            {{macro.displayReviews(reviews)}}
+
+        {% else%}
+            <h3 class="text-center">This movie has no reviews </h3>
+
+            <a class="btn btn-success btn-lg text-center" href="/movie/review/new/{{movie.id}}"> Write a new review</a>
+        {% endif %}
+
+    </div>
+
+</div>
+{% endblock %}
+
+

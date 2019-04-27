@@ -3,7 +3,22 @@
     {% for quote in quote_list %}
     <li>{{ quote.id}}</li>
         <li>{{ quote.quote}}</li>
-        <li>{{ quote.author}}</li>
+        <li>{{ quote.author}</li>
     {% endfor %}
-
 {% endmacro %}
+
+{% macro displayBlogList(blog_list) %}
+{% for blog in blog_list %}
+<li>{{ blog.id}}</li>
+<li>{{ blog.blog}}</li>
+<li>{{ blog.submitted_by}}</li>
+<li>{{blog.posted}}</li>
+{% endfor %}
+{% endmacro %}
+
+{% macro displayReviews(review_list) %}
+    {% for review in review_list %}
+    <li>{{review.title}}</li>
+   <li>{{review.review}}</li>
+    {%endfor%}
+    {%endmacro%}

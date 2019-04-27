@@ -70,3 +70,15 @@ def new_review(id):
 
     title = f'{blog.title} review'
     return render_template('new_review.html',title = title, review_form=form, blog=blog)
+
+@main.route('/blog/<int:id>')
+def blog(id):
+
+    '''
+    View blog page function that returns the blog details page and its data
+    '''
+    blog = get_blog(id)
+    title = f'{blog.title}'
+    reviews = Review.get_reviews(blog.id)
+
+    return render_template('blog.html',title = title,blog=blog,reviews = reviews)
