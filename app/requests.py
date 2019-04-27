@@ -13,13 +13,13 @@ def configure_request(app):
     api_key = app.config['QUOTES_API_KEY']
     base_url = app.config['QUOTES_API_BASE_URL']
 
-def get_quotes(category):
+def get_quotes(quote):
     '''
     Function that gets the json response to our url request
     '''
-    get_quotes_url = base_url.format(category,api_key)
+    get_quotes_url = base_url.format(quote,api_key)
     
-    with urllib.request.urlopen(get_movies_url) as url:
+    with urllib.request.urlopen(get_quotes_url) as url:
         get_quotes_data = url.read()
         get_quotes_response = json.loads(get_quotes_data)
         

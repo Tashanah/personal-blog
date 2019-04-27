@@ -4,6 +4,7 @@ from .forms import BlogForm,UpdateBlog,ReviewForm
 from ..import db,photos
 from ..models import User,Blog,Quote,Review,
 from flask_login import login_required,current_user
+from .requests import get_quotes,process_results
 import markdown2
 
 @main.route("/")
@@ -41,4 +42,16 @@ def blog():
 
     title="Post your entry"
     return render_template('blog.html',title=title,form=form)
+
+
+@main.route('/quote/<int:quote>')
+def quotes(quote):
+
+    '''
+    View quotes page function that returns the quote details page and its data
+    '''
+    quote = get_quotes(quote)
+    title = f'{quote.quote}'
+
+    return render_template('quote.html',title = title,quote = quote)  
 
