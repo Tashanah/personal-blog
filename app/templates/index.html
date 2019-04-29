@@ -1,6 +1,6 @@
 {%extends 'base.html'%}
 {%import 'macros.html' as macro%}
-{%block content%}
+{% block content %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,9 +9,45 @@
         <title> {{ title }}</title>
         {% else %}
         <title> Welcome to Blogger </title>
+       
         {% endif %}
     </head>
-    {% import 'macros.html' as macro%}
+    <style>
+            body{
+                background-image: url("https://images.pexels.com/photos/2204440/pexels-photo-2204440.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: 100%;
+            }
+        </style>
     <body>
-        {{ macro.displayQuoteeList}}
-    </body>
+        <div class="container">
+             <h2 class=well style="background-color: blanchedalmond; color: black">
+                    {{quote}}
+                    {{quote_author}}
+             </h2>
+        <h1 class="jumbotron"><em>Welcome to BLOGGER! The Number One Site For Sharing Your Thoughts And Opinions With The World.</em></h1>
+        
+        <div class="row">
+             {% for blog in blogs %}
+            <div class="col-md-4">
+                <div class=well style="background-color:black;
+                color: white">
+             
+            <em><a href="/details/{{blog.id}}">{{blog.blog}}</a> <h2>{{blog.blog}}</em> </h2>
+             <em><h2>{{blog.submitted_by}}</h2></em>
+             <em><h2>{{blog.posted.strftime("%Y-%m-%d")}}</h2></em>
+        
+         </div>
+     </div>
+    
+     {% endfor %}
+        </div>
+       
+        
+       
+     </body>
+ 
+     {% endblock %}
+        </div>
+       
