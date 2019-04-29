@@ -52,7 +52,8 @@ class Review(db.Model):
 
     def save_review(self):
         Review.all_reviews.append(self)
-
+        db.session.add(self)
+        db.session(commit)
     @classmethod
     def clear_reviews(cls):
         Review.all_reviews.clear()
@@ -77,6 +78,7 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
+    reviews = db.relationship('Review',backref = 'user',lazy = "dynamic")
     # pitches=db.relationship('Pitch', backref='user', lazy="dynamic")
 
     @property
