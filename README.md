@@ -1,4 +1,4 @@
-## Pitch App
+## Blog App
 This project was generated using python version 3.6. This is a personal blog.It allows a user to post an entry, comment on other blogs, and view the most recent posts.
 
 ## SETUP INSTRUCTIONS:
