@@ -13,7 +13,7 @@ class UpdateBlog(FlaskForm):
     submit = SubmitField('Submit')
 
 class BlogForm(FlaskForm):
-    title = StringField("Pitch Title",validators=[Required()])
+    title = StringField("Blog Title",validators=[Required()])
     blog = TextAreaField('Write your blog post here')
     submitted_by = TextAreaField('Write your name here')
     submit = SubmitField('Submit')
